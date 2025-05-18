@@ -33,6 +33,6 @@ npm run dev
 ![Notes Table](./notes.png)
 
 ## API
-Get Notes - host/notes [GET]
-Add Note - host/note [POST]
-Video Details - https://serpapi.com/searches/f68c6a72c6fa6187/68297f9227c2b0aeb2794e04.json
+1. Get Notes - host/notes [GET]
+2. Add Note - host/note [POST]
+3. Video Details - https://serpapi.com/searches/f68c6a72c6fa6187/68297f9227c2b0aeb2794e04.json
