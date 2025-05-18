@@ -32,7 +32,10 @@ export const VideoDetails = ({ video }) => {
           <div className="video-description">
             <p>{video.description.content}</p>
           </div>
-          <button className="edit-button" onClick={() => setEditMode(!editMode)}>
+          <button
+            className="edit-button"
+            onClick={() => setEditMode(!editMode)}
+          >
             {editMode ? "Cancel" : "Edit"}
           </button>
           <div className={`edit-video ${editMode ? "visible" : "hidden"}`}>

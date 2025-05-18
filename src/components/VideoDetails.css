@@ -1,0 +1,159 @@
+.video-details-container {
+  max-width: 100%;
+  padding: 20px;
+  color: #333;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  margin-bottom: 20px;
+}
+
+.video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+.video-title {
+  color: #a62c2c;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+}
+
+.video-info {
+  margin-bottom: 30px;
+}
+
+.video-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.video-description {
+  background-color: #f9f7e8;
+  border-left: 4px solid #d3ca79;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 0 5px 5px 0;
+}
+
+.comments-section {
+  margin-top: 30px;
+}
+
+.comments-section h3 {
+  color: #a62c2c;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #d3ca79;
+}
+
+.comment-form {
+  margin-bottom: 20px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d3ca79;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.post-button {
+  background-color: #ea7300;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.post-button:hover {
+  background-color: #d46800;
+}
+
+.comments-list {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-item {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 3px solid #a62c2c;
+}
+
+.comment-text {
+  margin-bottom: 10px;
+}
+
+.reply-form {
+  display: flex;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.reply-form input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #d3ca79;
+  border-radius: 4px;
+}
+
+.reply-button {
+  background-color: #d3ca79;
+  color: #333;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reply-button:hover {
+  background-color: #c8be63;
+}
+
+.reply-item {
+  background-color: #f9f7e8;
+  padding: 10px 15px;
+  margin-top: 10px;
+  margin-left: 20px;
+  border-radius: 5px;
+  border-left: 2px solid #ea7300;
+}
+
+@media (max-width: 768px) {
+  .video-stats {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .reply-form {
+    flex-direction: column;
+  }
+
+  .video-title {
+    font-size: 1.4rem;
+  }
+}

@@ -1,28 +1,27 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
-
-//   import { initialDataState, dataReducer } from "../reducers/DataReducer";
+import { createContext, useContext, useState } from "react";
 
 export const Data = createContext();
 
 export const DataProvider = ({ children }) => {
-  const [loader, setLoader] = useState(false);
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const adminSecret = import.meta.env.VITE_HASURA_ADMIN_SECRET;
   const [videoData, setVideoData] = useState({});
-
-  // const [dataState, dataDispatcher] = useReducer(dataReducer, initialDataState);
 
   const setData = async () => {
     try {
       const response = await fetch(
         "/api/searches/f68c6a72c6fa6187/68297f9227c2b0aeb2794e04.json"
       );
+      const notesResponse = await fetch(baseUrl + "/notes", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-hasura-admin-secret": adminSecret,
+        },
+      });
       const data = await response.json();
-      setVideoData({ ...data, comments: [], notes: [] });
+      const notesData = await notesResponse.json();
+      setVideoData({ ...data, comments: [], notes: notesData.yt_notes });
     } catch (e) {
       console.error(e);
     }
@@ -96,8 +95,42 @@ export const DataProvider = ({ children }) => {
     }));
   };
 
+  const addNote = async (note) => {
+    try {
+      const response = await fetch(
+        `https://brief-shiner-74.hasura.app/api/rest/note`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-hasura-admin-secret": adminSecret,
+          },
+          body: JSON.stringify({ note }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to add note");
+      }
+
+      const data = await response.json();
+
+      setVideoData((prev) => ({
+        ...prev,
+        notes: [...prev.notes, data.insert_yt_notes_one],
+      }));
+    } catch (error) {
+      console.error("Error adding note:", error);
+    }
+  };
+
+  const getFilteredNotes = (search) => {
+    return videoData?.notes?.filter((item) =>
+      item.note.toLowerCase().includes(search.toLowerCase())
+    );
+  };
+
   const value = {
-    setLoader,
     setData,
     setVideoData,
     postComment,
@@ -105,6 +138,8 @@ export const DataProvider = ({ children }) => {
     removeComment,
     removeReply,
     setTitleAndDescription,
+    addNote,
+    getFilteredNotes,
     videoData,
   };
 
