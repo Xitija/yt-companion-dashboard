@@ -14,7 +14,13 @@ export const VideoNotes = () => {
           onChange={(e) => setNote(e.target.value)}
           placeholder="Add your notes here..."
         />
-        <button onClick={() => addNote(note)} className="save-button">
+        <button
+          onClick={() => {
+            addNote(note);
+            setNote("");
+          }}
+          className="save-button"
+        >
           Save Notes
         </button>
       </div>
