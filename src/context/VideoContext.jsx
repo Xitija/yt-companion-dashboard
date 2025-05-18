@@ -98,7 +98,7 @@ export const DataProvider = ({ children }) => {
   const addNote = async (note) => {
     try {
       const response = await fetch(
-        `${VITE_API_BASE_URL}/note`,
+        `${baseUrl}/note`,
         {
           method: "POST",
           headers: {
