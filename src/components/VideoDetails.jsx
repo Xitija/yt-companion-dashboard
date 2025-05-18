@@ -84,7 +84,13 @@ export const VideoDetails = ({ video }) => {
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
-            <button className="post-button" onClick={() => postComment(text)}>
+            <button
+              className="post-button"
+              onClick={() => {
+                postComment(text);
+                setText("");
+              }}
+            >
               Post Comment
             </button>
           </div>
