@@ -3,7 +3,6 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { VideoDetails } from "./components/VideoDetails";
 import { VideoNotes } from "./components/VideoNotes";
-import { data } from "react-router";
 import { useData } from "./context/VideoContext.jsx";
 
 import "./App.css";
